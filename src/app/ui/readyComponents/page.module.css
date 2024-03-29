@@ -1,0 +1,17 @@
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 310px;
+  padding: 11px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.name {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}

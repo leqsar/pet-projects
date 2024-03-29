@@ -1,0 +1,13 @@
+.title {
+  margin-top: 50px;
+  font-size: 43px;
+  text-align: center;
+}
+
+.cards {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  row-gap: 50px ;
+  margin: 100px auto;
+}
