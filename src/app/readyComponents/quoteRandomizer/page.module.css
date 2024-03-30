@@ -26,13 +26,18 @@
 .advice {
   margin-top: 35px;
   font-size: 30px;
+  font-weight: 600;
   text-align: center;
   color: hsl(193, 38%, 86%);
 }
 
-.stripe {
+.stripe, .stripeMobile {
   position: absolute;
   bottom: 80px;
+}
+
+.stripeMobile {
+  display: none;
 }
 
 .button {
@@ -48,4 +53,22 @@
 .button:hover {
   cursor: pointer;
   box-shadow: 0 0px 30px hsl(150, 100%, 66%);
+}
+
+@media screen and (max-width: 540px) {
+  .stripe {
+    display: none;
+  }
+
+  .stripeMobile {
+    display: block;
+  }
+
+  .card {
+    width: 95%;
+  }
+
+  .advice {
+    font-size: 22px;
+  }
 }

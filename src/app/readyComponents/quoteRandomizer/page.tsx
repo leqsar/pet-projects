@@ -32,6 +32,13 @@ export default function QuoteRandomizer() {
           src='/pattern-divider-desktop.svg'
           alt=''
         ></Image>
+        <Image 
+          className={styles.stripeMobile}
+          width={300}
+          height={16}
+          src='/pattern-divider-mobile.svg'
+          alt=''
+        ></Image>
         <button className={styles.button} onClick={handleClick}>
           <Image
             className={styles.dice}
