@@ -1,0 +1,51 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: hsl(218, 23%, 16%);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 536px;
+  min-height: 333px;
+  padding: 50px;
+  background-color: hsl(217, 19%, 24%);
+  border-radius: 20px;
+}
+
+.adviceNumber {
+  color: hsl(150, 100%, 66%)
+}
+
+.advice {
+  margin-top: 35px;
+  font-size: 30px;
+  text-align: center;
+  color: hsl(193, 38%, 86%);
+}
+
+.stripe {
+  position: absolute;
+  bottom: 80px;
+}
+
+.button {
+  position: absolute;
+  bottom: -32px;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 32px;
+  background-color: hsl(150, 100%, 66%);
+}
+
+.button:hover {
+  cursor: pointer;
+  box-shadow: 0 0px 30px hsl(150, 100%, 66%);
+}
