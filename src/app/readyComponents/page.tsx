@@ -8,6 +8,7 @@ export default function CardsWrapper() {
       <div className={styles.cards}>
         <Card linkHref='/readyComponents/cardComponent' imageSrc='/desktop-design.jpg' name='Blog preview card'></Card>
         <Card linkHref='/readyComponents/quoteRandomizer' imageSrc='/quote-design.jpg' name='Quote randomizer'></Card>
+        <Card linkHref='/readyComponents/timeTracking' imageSrc='/track-design.jpg' name='Time tracking cards'></Card>
       </div>
     </>
   )
