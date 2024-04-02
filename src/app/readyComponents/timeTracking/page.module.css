@@ -141,11 +141,6 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .page {
-    height: auto;
-    overflow: scroll;
-  }
-
   .cardWrapper {
     margin-top: 50px;
     grid-template-columns: repeat(2, 255px);
@@ -154,11 +149,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .page {
-    height: auto;
-    overflow: scroll;
-  }
-
   .cardWrapper {
     margin-top: 50px;
     grid-template-columns: repeat(1, 255px);
