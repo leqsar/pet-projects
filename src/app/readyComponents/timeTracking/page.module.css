@@ -152,6 +152,6 @@
   .cardWrapper {
     margin-top: 50px;
     grid-template-columns: repeat(1, 255px);
-    grid-template-rows: repeat(7, 244px);
+    grid-template-rows: repeat(8, 244px);
   }
 }
