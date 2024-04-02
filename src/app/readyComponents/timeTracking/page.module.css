@@ -1,0 +1,167 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: hsl(226, 43%, 10%);
+}
+
+.cardWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 255px);
+  grid-template-rows: repeat(2, 244px);
+  gap: 30px;
+}
+
+.profileCard {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  height: 520px;
+  background-color: hsl(235, 46%, 20%);
+  border-radius: 15px;
+}
+
+.profile {
+  padding: 30px;
+  background-color: hsl(246, 80%, 60%);
+  border-radius: 15px;
+}
+
+.photo {
+  border: 2px solid white;
+  border-radius: 43px;
+}
+
+.heading {
+  margin-top: 45px;
+  font-size: 16px;
+  color: hsl(236, 100%, 87%);
+}
+
+.name {
+  margin-top: 15px;
+  font-size: 45px;
+}
+
+.termsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 165px;
+  padding-left: 30px;
+}
+
+.termsList li {
+  color: hsl(235, 45%, 61%);
+  list-style-type: none;
+}
+
+.termsList li:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.timeCard {
+  position: relative;
+  border-radius: 15px;
+}
+
+.cardWrapper .timeCard:nth-child(2) {
+  background-color: hsl(15, 100%, 70%);
+}
+
+.cardWrapper .timeCard:nth-child(3) {
+  background-color: hsl(195, 74%, 62%);
+}
+
+.cardWrapper .timeCard:nth-child(4) {
+  background-color: hsl(348, 100%, 68%);
+}
+
+.cardWrapper .timeCard:nth-child(5) {
+  background-color: hsl(145, 58%, 55%);
+}
+
+.cardWrapper .timeCard:nth-child(6) {
+  background-color: hsl(264, 64%, 52%);
+}
+
+.cardWrapper .timeCard:nth-child(7) {
+  background-color: hsl(43, 84%, 65%);
+}
+
+.image {
+  position: absolute;
+  right: 0;
+}
+
+.card {
+  position: absolute;
+  top: 45px;
+  width: 100%;
+  height: 200px;
+  padding-left: 30px;
+  background-color: hsl(235, 46%, 20%);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.card:hover {
+  cursor: pointer;
+  background-color: hsl(236, 41%, 34%);
+}
+
+.card p:nth-child(1) {
+  margin-top: 33px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card p:nth-child(2) {
+  margin-top: 30px;
+  font-size: 50px;
+  font-weight: 300;
+}
+
+.card p:nth-child(3) {
+  margin-top: 20px;
+  color: hsl(235, 45%, 61%);
+}
+
+.menuIcon {
+  position: absolute;
+  right: 30px;
+  top: 80px;
+}
+
+.menuIcon:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  .page {
+    height: auto;
+    overflow: scroll;
+  }
+
+  .cardWrapper {
+    margin-top: 50px;
+    grid-template-columns: repeat(2, 255px);
+    grid-template-rows: repeat(4, 244px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .page {
+    height: auto;
+    overflow: scroll;
+  }
+
+  .cardWrapper {
+    margin-top: 50px;
+    grid-template-columns: repeat(1, 255px);
+    grid-template-rows: repeat(7, 244px);
+  }
+}
