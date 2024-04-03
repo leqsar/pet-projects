@@ -9,6 +9,7 @@ export default function CardsWrapper() {
         <Card linkHref='/readyComponents/cardComponent' imageSrc='/desktop-design.jpg' name='Blog preview card'></Card>
         <Card linkHref='/readyComponents/quoteRandomizer' imageSrc='/quote-design.jpg' name='Quote randomizer'></Card>
         <Card linkHref='/readyComponents/timeTracking' imageSrc='/track-design.jpg' name='Time tracking cards'></Card>
+        <Card linkHref='/readyComponents/creditCard' imageSrc='/credit-design.jpg' name='Credit card form'></Card>
       </div>
     </>
   )

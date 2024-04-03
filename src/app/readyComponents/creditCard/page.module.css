@@ -1,0 +1,177 @@
+.page {
+  display: flex;
+  width: 100%;
+  max-width: 1920px;
+  min-height: 100vh;
+}
+
+.cardWrapper {
+  position: relative;
+  width: 34%;
+  font-size: 18px;
+}
+
+.frontSide, .backSide {
+  min-width: 445px;
+  width: 90%;
+  min-height: 245px;
+  aspect-ratio: 445 / 245;
+  border-radius: 10px;
+}
+
+.frontSide {
+  position: relative;
+  top: 165px;
+  left: 35%;
+}
+
+.cardInfo {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.decorations {
+  display: flex;
+  align-items: center;
+}
+
+.bigCircle {
+  min-width: 46px;
+  aspect-ratio: 1 / 1;
+  width: 10%;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.number {
+  margin-top: 20%;
+  font-weight: 500;
+  font-size: 25px;
+  letter-spacing: 0.2em;
+}
+
+.additionalInfo {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.circle {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.backSide {
+  position: relative;
+  margin-top: 200px;
+  left: 50%;
+}
+
+.cvv {
+  position: relative;
+  top: 46%;
+  left: 82%;
+  width: 20px;
+  color: white;
+}
+
+.formWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 66%;
+  background-color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form label {
+  font-family: inherit;
+  font-size: 13px;
+  color: hsl(278, 68%, 11%);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form input {
+  height: 45px;
+  margin-top: 10px;
+  padding-left: 10px;
+  background-color: transparent;
+  color: black;
+  border-radius: 7px;
+  border: 1px solid hsl(270, 3%, 87%);
+  font-family: inherit;
+  font-size: 18px;
+}
+
+.form input::placeholder,
+.form input::-ms-input-placeholder {
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form .additionalInfoForm {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.dateForm {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(2, 80px);
+  grid-template-rows: 14px 45px;
+  column-gap: 10px;
+}
+
+.dateForm > label {
+  align-self: end;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.cvvForm {
+  display: flex;
+  flex-direction: column;
+  width: 190px;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  margin-top: 40px;
+  font-weight: 500;
+  font-size: 25px;
+  color: hsl(278, 68%, 11%);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.info {
+  margin-top: 11px;
+  margin-bottom: 50px;
+  font-size: 17px;
+  color: hsl(279, 6%, 55%);
+}
