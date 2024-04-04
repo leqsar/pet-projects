@@ -1,18 +1,20 @@
 'use client'
 import button from '@/app/readyComponents/creditCard/button.module.css'
 import styles from '@/app/readyComponents/creditCard/page.module.css'
-import { useState } from 'react'
-import validateData from '@/app/readyComponents/creditCard/validateForm'
 import { ChangeEventHandler } from 'react'
+import Error from '@/app/readyComponents/creditCard/error'
+import { FormEventHandler } from 'react'
+import { ErrorsObj} from '@/app/utils/types';
 
 interface Props {
   handleClick: ChangeEventHandler<HTMLInputElement>;
+  handleSubmit: FormEventHandler<HTMLFormElement>;
+  errors: ErrorsObj;
 }
 
-
-export default function Form({ handleClick }: Props) {
+export default function Form({ handleClick, handleSubmit, errors }: Props) {  
   return (
-    <form action={validateData} className={styles.form}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <div>
         <label htmlFor="name">cardholder name</label>
         <input 
@@ -21,7 +23,9 @@ export default function Form({ handleClick }: Props) {
           name="name"
           placeholder='e.g. John Doe'
           onChange={handleClick}
+          className={styles.nameInput}
           />
+          {errors.name ? <Error message={errors.name}/> : null}
       </div>
       <div>
         <label htmlFor="number">card number</label>
@@ -33,6 +37,7 @@ export default function Form({ handleClick }: Props) {
           onChange={handleClick}
           maxLength={16}
         />
+        {errors.number ? <Error message=''/> : null}
       </div>
       <div className={styles.additionalInfoForm}>
         <div className={styles.dateForm}>
@@ -55,6 +60,7 @@ export default function Form({ handleClick }: Props) {
             minLength={2}
             maxLength={2}
           />
+          {errors.year || errors.month ? <Error message=''/> : null}
         </div>
         <div className={styles.cvvForm}>
           <label htmlFor="cvv">cvv</label>
@@ -67,9 +73,10 @@ export default function Form({ handleClick }: Props) {
             maxLength={3}
             minLength={3}
           />
+          {errors.cvv ? <Error message=''/> : null}
         </div>
       </div>
-      <button className={button.button}>Confirm</button>
+      <button type='submit' className={button.button}>Confirm</button>
     </form>
   )
 }

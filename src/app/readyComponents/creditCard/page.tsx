@@ -7,6 +7,7 @@ import Form from '@/app/readyComponents/creditCard/form'
 import { useState } from 'react'
 import { ChangeEvent } from 'react'
 import formatInput from '@/app/utils/helpers/formatInput'
+import validateData from '@/app/readyComponents/creditCard/validateForm'
 
 export default function CreditCard() {
   const [data, setData] = useState({
@@ -15,6 +16,14 @@ export default function CreditCard() {
     cvv: '000',
     month: '00',
     year: '00',
+  });
+
+  const [errors, setErrors] = useState({
+    name: '',
+    number: '',
+    year: '',
+    month: '',
+    cvv: '',
   });
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -54,6 +63,13 @@ export default function CreditCard() {
     }
   }
 
+  async function handleSubmit(event: React.FormEvent) {
+    console.log('aaaaaa')
+    event.preventDefault();
+    const errorsObj = await validateData(data);
+    setErrors(errorsObj);
+  }
+
   return (
     <div className={`${styles.page} ${spaceGrotesk.className}`}>
       <div className={styles.cardWrapper}>
@@ -91,7 +107,7 @@ export default function CreditCard() {
         </div>
       </div>
       <div className={styles.formWrapper}>
-        <Form handleClick={handleChange}/>
+        <Form handleClick={handleChange} handleSubmit={handleSubmit} errors={errors}/>
         {/* <SuccessPopup /> */}
       </div>
     </div>
