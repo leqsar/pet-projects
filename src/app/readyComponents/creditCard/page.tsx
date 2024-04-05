@@ -18,6 +18,14 @@ export default function CreditCard() {
     year: '00',
   });
 
+  const [formValue, setFormValue] = useState({
+    name: '',
+    number: '',
+    year: '',
+    month: '',
+    cvv: '',
+  })
+ 
   const [errors, setErrors] = useState({
     name: '',
     number: '',
@@ -32,31 +40,49 @@ export default function CreditCard() {
       case 'number':
         const updatedNumber = value.length < 16 ? formatInput(value, 16) : value;
         const formattedUpdatedNumber = updatedNumber.replace(/(\d{4})/g, '$1 ');
+
         setData({
           ...data,
           number: formattedUpdatedNumber
         });
+
+        setFormValue({
+          ...formValue,
+          number: value
+        })
         break;
       case 'month':
       case 'year':
         const updatedDate = value.length < 2 ? formatInput(value, 2) : value;
-
+        
         setData({
           ...data,
           [e.target.name]: updatedDate
         });
+        setFormValue({
+          ...formValue,
+          [e.target.name]: value
+        })
         break;
       case 'cvv':
         const updatedCvv = value.length < 2 ? formatInput(value, 3) : value;
-
+        
         setData({
           ...data,
           cvv: updatedCvv
         });
+        setFormValue({
+          ...formValue,
+          cvv: value
+        })
         break;    
       default:
         setData({
           ...data,
+          [e.target.name]: e.target.value
+        });
+        setFormValue({
+          ...formValue,
           [e.target.name]: e.target.value
         });
         break;
@@ -65,9 +91,6 @@ export default function CreditCard() {
 
   async function handleSubmit(event: React.FormEvent) {
     console.log('aaaaaa')
-    event.preventDefault();
-    const errorsObj = await validateData(data);
-    setErrors(errorsObj);
   }
 
   return (
@@ -107,7 +130,12 @@ export default function CreditCard() {
         </div>
       </div>
       <div className={styles.formWrapper}>
-        <Form handleClick={handleChange} handleSubmit={handleSubmit} errors={errors}/>
+        <Form 
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          errors={errors}
+          formValue={formValue}
+        />
         {/* <SuccessPopup /> */}
       </div>
     </div>

@@ -22,6 +22,8 @@ export default async function validateData(formData: DataType): Promise<ErrorsOb
     cvv: Number(formData.cvv),
   });
 
+  console.log(formData)
+
   let errors = {
     name: '',
     number: '',
@@ -48,6 +50,7 @@ export default async function validateData(formData: DataType): Promise<ErrorsOb
         : message;
     }
   }
+  console.log(errors)
 
   return errors;
 }
