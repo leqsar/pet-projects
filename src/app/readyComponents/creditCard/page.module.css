@@ -113,7 +113,7 @@
   background-color: transparent;
   color: black;
   border-radius: 7px;
-  border: 1px solid hsl(270, 3%, 87%);
+  border: 2px solid hsl(270, 3%, 87%);
   font-family: inherit;
   font-size: 18px;
 }
@@ -179,6 +179,14 @@
   margin-bottom: 50px;
   font-size: 17px;
   color: hsl(279, 6%, 55%);
+}
+
+.error {
+  color: red;
+}
+
+.invalidInput {
+  border: 2px solid red !important;
 }
 
 @media screen and (max-width: 1300px) {

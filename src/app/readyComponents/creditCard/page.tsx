@@ -4,8 +4,7 @@ import Image from 'next/image'
 import { spaceGrotesk } from '@/app/ui/fonts'
 import SuccessPopup from '@/app/readyComponents/creditCard/successPopup'
 import Form from '@/app/readyComponents/creditCard/form'
-import { useState } from 'react'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useState } from 'react'
 import formatInput from '@/app/utils/helpers/formatInput'
 import validateData from '@/app/readyComponents/creditCard/validateForm'
 
@@ -33,6 +32,8 @@ export default function CreditCard() {
     month: '',
     cvv: '',
   });
+
+  const [isValid, setIsValid] = useState(false)
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -90,7 +91,18 @@ export default function CreditCard() {
   }
 
   async function handleSubmit(event: React.FormEvent) {
-    console.log('aaaaaa')
+    event.preventDefault();
+    
+    const errorsObj = await validateData(formValue);
+    const isValid = Object.entries(errorsObj).every((keyValuePair) => {
+      keyValuePair[1] === '';
+    });
+
+    if(isValid) {
+      setIsValid(true);
+    } else {
+      setErrors(errorsObj);
+    }
   }
 
   return (
@@ -130,13 +142,15 @@ export default function CreditCard() {
         </div>
       </div>
       <div className={styles.formWrapper}>
-        <Form 
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          errors={errors}
-          formValue={formValue}
-        />
-        {/* <SuccessPopup /> */}
+        {isValid 
+          ? <SuccessPopup />
+          : <Form 
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              errors={errors}
+              formValue={formValue}
+            />
+        }
       </div>
     </div>
   )

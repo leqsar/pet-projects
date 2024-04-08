@@ -1,4 +1,3 @@
-'use server'
 import z from 'zod'
 import { ZodIssue } from 'zod';
 import { DataType,  ErrorsObj} from '@/app/utils/types';
@@ -7,14 +6,14 @@ export default async function validateData(formData: DataType): Promise<ErrorsOb
   const card = z.object({
     name: z.string().min(1, 'Can`t be empty'),
     number: z.string().min(1, 'Can`t be empty').regex(/^\d{4}\d{4}\d{4}\d{4}$/, 'Should be in 1111 1111 1111 1111 format'),
-    month: z.number().gte(1).lte(12, {message: 'Number from 1 to 12'}),
+    month: z.number().gte(1, {message: 'Number 1-12'}).lte(12, {message: 'Number 1-12'}),
     year: z.number().min(2, 'Can`t be empty'),
     cvv: z.number().min(3, 'Can`t be empty'),
   });
 
   const requiredCard = card.required();
 
-  const parse = requiredCard.safeParse({
+  const parse = await requiredCard.safeParse({
     name: formData.name,
     number: formData.number,
     month: Number(formData.month),
@@ -22,17 +21,13 @@ export default async function validateData(formData: DataType): Promise<ErrorsOb
     cvv: Number(formData.cvv),
   });
 
-  console.log(formData)
-
-  let errors = {
+  const errors = {
     name: '',
     number: '',
     year: '',
     month: '',
     cvv: '',
   };
-
-  console.log('here2')
 
   if (!parse.success) {
     const fieldErrors = parse.error.flatten((issue: ZodIssue) => ({
@@ -50,7 +45,6 @@ export default async function validateData(formData: DataType): Promise<ErrorsOb
         : message;
     }
   }
-  console.log(errors)
 
   return errors;
 }
