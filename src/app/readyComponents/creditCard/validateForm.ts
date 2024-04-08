@@ -5,7 +5,7 @@ import { DataType,  ErrorsObj} from '@/app/utils/types';
 export default async function validateData(formData: DataType): Promise<ErrorsObj> {
   const card = z.object({
     name: z.string().min(1, 'Can`t be empty'),
-    number: z.string().min(1, 'Can`t be empty').regex(/^\d{4}\d{4}\d{4}\d{4}$/, 'Should be in 1111 1111 1111 1111 format'),
+    number: z.string().min(1, 'Can`t be empty').regex(/^\d{4}\s\d{4}\s\d{4}\s\d{4}$/, 'Should be in 1111 1111 1111 1111 format'),
     month: z.number().gte(1, {message: 'Number 1-12'}).lte(12, {message: 'Number 1-12'}),
     year: z.number().min(2, 'Can`t be empty'),
     cvv: z.number().min(3, 'Can`t be empty'),

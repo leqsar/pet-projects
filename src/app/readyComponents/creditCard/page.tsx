@@ -4,39 +4,43 @@ import Image from 'next/image'
 import { spaceGrotesk } from '@/app/ui/fonts'
 import SuccessPopup from '@/app/readyComponents/creditCard/successPopup'
 import Form from '@/app/readyComponents/creditCard/form'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useState, useRef } from 'react'
 import formatInput from '@/app/utils/helpers/formatInput'
 import validateData from '@/app/readyComponents/creditCard/validateForm'
 
 export default function CreditCard() {
-  const [data, setData] = useState({
+  const emptyDataObj = {
+    name: '',
+    number: '',
+    year: '',
+    month: '',
+    cvv: '',
+  }
+
+  const defaultDataObj = {
     name: 'John Doe',
     number: '0000 0000 0000 0000',
     cvv: '000',
     month: '00',
     year: '00',
-  });
+  }
 
-  const [formValue, setFormValue] = useState({
-    name: '',
-    number: '',
-    year: '',
-    month: '',
-    cvv: '',
-  })
- 
-  const [errors, setErrors] = useState({
-    name: '',
-    number: '',
-    year: '',
-    month: '',
-    cvv: '',
-  });
+  const [data, setData] = useState(defaultDataObj);
+  const [formValue, setFormValue] = useState(emptyDataObj)
+  const [errors, setErrors] = useState(emptyDataObj);
+  const [isValid, setIsValid] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const [isValid, setIsValid] = useState(false)
+  function returnToForm() {
+    setIsValid(false);
+    setFormValue(emptyDataObj);
+    setData(defaultDataObj);
+  }
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
+    const cursorPosition = inputRef.current?.selectionStart;
+
     switch (e.target.name) {
       case 'number':
         const updatedNumber = value.length < 16 ? formatInput(value, 16) : value;
@@ -49,7 +53,7 @@ export default function CreditCard() {
 
         setFormValue({
           ...formValue,
-          number: value
+          number: value.replace(/\s/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')
         })
         break;
       case 'month':
@@ -88,18 +92,26 @@ export default function CreditCard() {
         });
         break;
     }
+
+    if (cursorPosition !== null) {
+      const formattedValueBeforeCursor = formValue[e.target.name as keyof typeof formValue].substring(0, cursorPosition);
+      const numberOfSpacesBeforeCursor = (formattedValueBeforeCursor.match(/ /g) || []).length;
+      const newCursorPosition = cursorPosition! + numberOfSpacesBeforeCursor;
+      inputRef.current!.setSelectionRange(newCursorPosition, newCursorPosition);
+    }
   }
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     
     const errorsObj = await validateData(formValue);
-    const isValid = Object.entries(errorsObj).every((keyValuePair) => {
-      keyValuePair[1] === '';
+    const noErrors = Object.entries(errorsObj).every((keyValuePair) => {
+      return keyValuePair[1] === '';
     });
 
-    if(isValid) {
+    if(noErrors) {
       setIsValid(true);
+      setErrors(emptyDataObj)
     } else {
       setErrors(errorsObj);
     }
@@ -143,12 +155,13 @@ export default function CreditCard() {
       </div>
       <div className={styles.formWrapper}>
         {isValid 
-          ? <SuccessPopup />
+          ? <SuccessPopup handleClick={returnToForm}/>
           : <Form 
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               errors={errors}
               formValue={formValue}
+              inputRef={inputRef}
             />
         }
       </div>
