@@ -6,7 +6,7 @@ import SuccessPopup from '@/app/readyComponents/creditCard/successPopup'
 import Form from '@/app/readyComponents/creditCard/form'
 import { ChangeEvent, useState, useRef } from 'react'
 import formatInput from '@/app/utils/helpers/formatInput'
-import validateData from '@/app/readyComponents/creditCard/validateForm'
+import validateData from '@/app/utils/helpers/validateForm'
 
 export default function CreditCard() {
   const emptyDataObj = {
