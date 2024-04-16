@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  position: absolute;
+  max-width: 1440px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 40px;
+  width: 100%;
+}
+
+.linksWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 40%;
+  width: 60%;
+  height: 96px;
+  padding-left: 123px;
+  padding-right: 165px;
+  background: transparent;
+  backdrop-filter: blur(20px);
+}
+
+.linkWrapper {
+  display: flex;
+}
+
+.number {
+  margin-left: 12px;
+}

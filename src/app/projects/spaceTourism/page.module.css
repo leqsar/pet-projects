@@ -1,0 +1,53 @@
+.page {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1440px;
+  height: 900px;
+  padding: 0 11.5%;
+  background-image: url('/space-tourism/home/background-home-desktop.jpg');
+}
+
+.textWrapper {
+  margin-top: 387px;
+  width: 450px;
+}
+
+.info {
+  line-height: 32px;
+  margin-top: 78px;
+  font-size: 18px;
+}
+
+.subheading {
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.heading {
+  line-height: 150px;
+  margin-top: 50px;
+  font-size: 150px;
+  text-transform: uppercase;
+}
+
+.button {
+  width: 274px;
+  height: 274px;
+  margin-top: 495px;
+  border: 0;
+  border-radius: 50%;
+  color: black;
+  font-size: 32px;
+  text-transform: uppercase;
+  background-color: aliceblue;
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+
+.button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 88px rgba(255, 255, 255, 0.15);;
+}
+
+
