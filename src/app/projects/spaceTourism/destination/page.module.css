@@ -1,0 +1,82 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1440px;
+  height: 900px;
+  padding: 0 11.5%;
+  background-image: url('/space-tourism/destination/background-destination-desktop.jpg')
+}
+
+.headingWrapper {
+  display: flex;
+  margin-top: 212px;
+}
+
+.number, .heading {
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.number { 
+  color: #979797;
+}
+
+.heading {
+  margin-left: 28px;
+  color: #ffffff;
+}
+
+.navigationWrapper {
+  width: 26%;
+  margin-left: 60%;
+  margin-top: 64px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.destination {
+  position: relative;
+  font-size: 16px;
+  color:#D0D6F9;
+  text-transform: uppercase;
+  list-style-type: none;
+}
+
+.destination:after {
+  content: '';
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 30px;
+  width: 100%;
+  height: 1px;
+  border-bottom: 2px #979797 solid;
+}
+
+.destination:hover {
+  cursor: pointer;
+}
+
+.destination:hover:after {
+  display: block;
+}
+
+.activeDestination {
+  color: #ffffff;
+}
+
+.activeDestination:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 30px;
+  width: 100%;
+  height: 1px;
+  border-bottom: 2px #ffffff solid;
+}
