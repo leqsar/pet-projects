@@ -23,6 +23,31 @@
 
 .linkWrapper {
   display: flex;
+  position: relative;
+}
+
+.linkWrapper::after {
+  content: '';
+  display: none;
+  position: absolute;
+  top: 55px;
+  width: 100%;
+  height: 1px;
+  border-bottom: 2px #979797 solid;
+}
+
+.activeLink::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 55px;
+  width: 100%;
+  height: 1px;
+  border-bottom: 2px #ffffff solid;
+}
+
+.linkWrapper:hover:after {
+  display: block;
 }
 
 .number {
