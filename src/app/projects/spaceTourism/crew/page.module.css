@@ -30,7 +30,8 @@
 .pagination {
   display: flex;
   justify-content: space-between;
-  margin-top: 120px;
+  position: absolute;
+  top: 790px;
   width: 132px;
 }
 

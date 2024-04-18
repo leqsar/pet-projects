@@ -1,6 +1,11 @@
+import commander from '../../../../public/space-tourism/crew/image-douglas-hurley.png'
+import engineer from '../../../../public/space-tourism/crew/image-anousheh-ansari.png'
+import pilot from '../../../../public/space-tourism/crew/image-victor-glover.png'
+import specialist from '../../../../public/space-tourism/crew/image-mark-shuttleworth.png'
+
 export const members = [
   {
-    imageSrc: '/space-tourism/crew/image-douglas-hurley.png',
+    image: commander,
     position: 'Commander',
     name: 'Douglas Hurley',
     info: `Douglas Gerald Hurley is an American engineer, former Marine Corps pilot 
@@ -9,7 +14,7 @@ export const members = [
     number: 1,
   },
   {
-    imageSrc: '/space-tourism/crew/image-anousheh-ansari.png',
+    image: engineer,
     position: 'Flight Engineer',
     name: 'Anousheh Ansari',
     info: `Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems. 
@@ -18,7 +23,7 @@ export const members = [
     number: 2,
   },
   {
-    imageSrc: '/space-tourism/crew/image-victor-glover.png',
+    image: pilot,
     position: 'Pilot',
     name: 'Victor Glover',
     info: `Pilot on the first operational flight of the SpaceX Crew Dragon to the 
@@ -28,7 +33,7 @@ export const members = [
     number: 3,
   },
   {
-    imageSrc: '/space-tourism/crew/image-mark-shuttleworth.png',
+    image: specialist,
     position: 'Mission Specialist',
     name: 'Mark Shuttleworth',
     info: `Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind 

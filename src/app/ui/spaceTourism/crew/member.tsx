@@ -1,5 +1,5 @@
 import { members } from '@/app/utils/constants/members'
-import styles from '@/app/projects/spaceTourism/crew/page.module.css'
+import styles from '@/app/ui/spaceTourism/crew/member.module.css'
 import Image from 'next/image';
 
 export default function Member({ number }: {number: number}) {
@@ -10,9 +10,7 @@ export default function Member({ number }: {number: number}) {
   return (
     <div className={styles.memberWrapper}>
       <Image 
-        src={currentMember.imageSrc}
-        width={445}
-        height={445}
+        src={currentMember.image}
         className={styles.image}
         alt={`Picture of ${currentMember.name}`}
       />
