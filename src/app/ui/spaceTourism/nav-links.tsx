@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from '@/app/ui/spaceTourism/navigation.module.css'
 import clsx from 'clsx';
+import { barlow, barlowCondensed, bellefair } from '@/app/ui/fonts';
 
 const links = [
   { name: 'Home', href: '/projects/spaceTourism', number: "00" },
@@ -21,24 +22,15 @@ export default function NavLinks() {
           <Link
             key={link.name}
             href={link.href}
-            className={clsx( styles.linkWrapper, {
+            className={clsx( styles.linkWrapper, barlowCondensed.className, {
                 [styles.activeLink]: pathname === link.href,
             })}
           >
-            <p className={styles.name}>{link.name}</p>
             <p className={styles.number}>{link.number}</p>
+            <p className={styles.name}>{link.name}</p>
           </Link>
         );
       })}
     </div>
   );
 }
-
-// styles.linkWrapper
-
-// className={clsx(
-//   'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
-//   {
-//     'bg-sky-100 text-blue-600': pathname === link.href,
-//   },
-// )}

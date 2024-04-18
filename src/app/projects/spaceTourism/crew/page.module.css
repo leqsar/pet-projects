@@ -20,11 +20,14 @@
 
 .number { 
   color: #979797;
+  font-weight: 600;
 }
 
 .heading {
   margin-left: 28px;
   color: #ffffff;
+  font-weight: 300;
+  letter-spacing: 5px;
 }
 
 .pagination {

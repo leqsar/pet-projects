@@ -1,0 +1,34 @@
+.technologyWrapper {
+  margin-left: 6%;
+  position: relative;
+}
+
+.image {
+  position: absolute;
+  right: 0;
+  top: -50%;
+}
+
+.technology {
+  width: 35%;
+}
+
+.heading {
+  font-size: 16px;
+  color: #D0D6F9;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.name {
+  margin-top: 10px;
+  font-size: 56px;
+  text-transform: uppercase;
+}
+
+.definition {
+  margin-top: 17px;
+  font-size: 18px;
+  color: #D0D6F9;
+  font-weight: 300;
+}

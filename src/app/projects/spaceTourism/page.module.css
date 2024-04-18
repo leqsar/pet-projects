@@ -19,7 +19,12 @@
   font-size: 18px;
 }
 
+.subheading, .info {
+  color: #D0D6F9;
+}
+
 .subheading {
+  word-spacing: 5px;
   font-size: 28px;
   text-transform: uppercase;
 }
@@ -28,6 +33,7 @@
   line-height: 150px;
   margin-top: 50px;
   font-size: 150px;
+  line-height: 140px;
   text-transform: uppercase;
 }
 

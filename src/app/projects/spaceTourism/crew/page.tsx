@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { MouseEvent } from 'react';
 import Member from '@/app/ui/spaceTourism/crew/member';
 import clsx from 'clsx';
+import { barlowCondensed } from '@/app/ui/fonts';
 
 export default function Crew() {
   const [memberNumber, setMemberNumber] = useState(1);
@@ -17,9 +18,9 @@ export default function Crew() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.headingWrapper}>
-        <span className={styles.number}>01</span>
-        <h1 className={styles.heading}>pick your destination</h1>
+      <div className={`${styles.headingWrapper} ${barlowCondensed.className}`}>
+        <span className={styles.number}>02</span>
+        <h1 className={styles.heading}>meet your crew</h1>
       </div>
       <Member number={memberNumber}/>
       <ul className={styles.pagination} onClick={handleClick}>
