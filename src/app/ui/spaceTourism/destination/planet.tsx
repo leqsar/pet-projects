@@ -10,13 +10,14 @@ export default function Planet({ name } : {name: string}) {
   
   return (
     <div className={styles.planetWrapper}>
-      <Image 
-        src={currentPlanet.imageSrc}
-        width={445}
-        height={445}
-        className={styles.image}
-        alt={`Picture of ${currentPlanet.name}`}
-      />
+      <div className={styles.imageWrapper}>
+        <Image
+          src={currentPlanet.imageSrc}
+          fill
+          className={styles.image}
+          alt={`Picture of ${currentPlanet.name}`}
+        />
+      </div>
       <div className={styles.planet}>
         <p className={`${styles.name} ${bellefair.className}`}>{currentPlanet.name}</p>
         <p className={`${styles.info} ${barlow.className}`}>{currentPlanet.info}</p>

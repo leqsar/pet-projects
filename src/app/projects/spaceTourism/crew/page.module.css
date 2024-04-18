@@ -53,3 +53,30 @@
 .active {
   background-color: #ffffff;
 }
+
+@media screen and (max-width: 950px) {
+  .page {
+    padding: 0 12%;
+    height: 100%;
+    background-size: 100% 100%;
+  }
+
+  .headingWrapper {
+    margin-top: 136px;
+  }
+
+  .number, .heading {
+    font-size: 20px;
+  }
+
+  .pagination {
+    top: 442px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .pagePointer {
+    width: 10px;
+    height: 10px;
+  }
+}

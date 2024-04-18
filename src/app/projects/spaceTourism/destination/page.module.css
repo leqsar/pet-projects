@@ -84,3 +84,29 @@
   height: 1px;
   border-bottom: 2px #ffffff solid;
 }
+
+@media screen and (max-width: 950px) {
+  .page {
+    padding: 0 12%;
+    height: 100%;
+    background-size: 100% 100%;
+  }
+
+  .headingWrapper {
+    margin-top: 136px;
+  }
+
+  .number, .heading {
+    font-size: 20px;
+  }
+
+  .navigationWrapper {
+    position: absolute;
+    width: 40%;
+    margin-left: 0;
+    margin-top: 0;
+    left: 50%;
+    top: 573px;
+    transform: translate(-50%, 0);
+  }
+}
