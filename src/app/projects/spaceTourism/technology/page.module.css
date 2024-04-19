@@ -79,10 +79,6 @@
     font-size: 20px;
   }
 
-  .headingWrapper {
-    margin-top: 136px;
-  }
-
   .pagination {
     position: absolute;
     top: 570px;
@@ -96,5 +92,32 @@
     width: 60px;
     height: 60px;
     font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .page {
+    padding: 0 6%;
+    height: auto;
+    align-items: center;
+    background-image: url('/space-tourism/technology/background-technology-mobile.jpg')
+}
+
+  .headingWrapper {
+    margin-top: 88px;
+  }
+
+  .number, .heading {
+    font-size: 16px;
+  }
+
+  .pagination {
+    top: 343px;
+  }
+
+  .pageNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 }

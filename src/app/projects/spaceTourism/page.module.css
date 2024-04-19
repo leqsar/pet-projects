@@ -59,6 +59,7 @@
 @media screen and (max-width: 950px) {
   .page {
     flex-direction: column;
+    justify-content: unset;
     align-items: center;
     height: auto;
     background-image: url('/space-tourism/home/background-home-tablet.jpg');
@@ -87,6 +88,42 @@
     width: 242px;
     height: 242px;
     margin-top: 156px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .page {
+    min-height: 667px;
+    height: auto;
+    padding: 0 6%;
+    background-image: url('/space-tourism/home/background-home-mobile.jpg');
+  }
+
+  .textWrapper {
+    margin-top: 112px;
+    width: 100%;
+  }
+
+  .heading {
+    margin-top: 20px;
+    font-size: 80px;
+    line-height: 80px;
+  }
+
+  .subheading {
+    font-size: 16px;
+  }
+
+  .info {
+    margin-top: 20px;
+    font-size: 15px;
+  }
+
+  .button {
+    width: 150px;
+    height: 150px;
+    margin-top: 80px;
+    font-size: 20px;
   }
 }
 

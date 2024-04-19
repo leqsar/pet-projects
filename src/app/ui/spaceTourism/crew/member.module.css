@@ -72,3 +72,30 @@
     object-fit: contain;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .member {
+    margin-top: 329px;
+  }
+
+  .position {
+    font-size: 16px;
+  }
+
+  .name {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  .info {
+    width: 100%;
+    margin-top: 16px;
+    font-size: 15px;
+  }
+
+  .image {
+    top: 32px;
+    height: 223px;
+    object-fit: contain;
+  }
+}
