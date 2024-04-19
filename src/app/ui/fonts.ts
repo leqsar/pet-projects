@@ -1,4 +1,4 @@
-import { Rubik, Bellefair, Barlow, Barlow_Condensed } from 'next/font/google';
+import { Rubik, Bellefair, Barlow, Barlow_Condensed, Space_Grotesk } from 'next/font/google';
  
 export const rubik = Rubik({ 
   weight: ['300', '400', '500'],
@@ -20,3 +20,7 @@ export const barlowCondensed = Barlow_Condensed({
   subsets: ['latin'], 
 });
 
+export const spaceGrotesk = Space_Grotesk({ 
+  weight: ['300', '500'],
+  subsets: ['latin'],
+});
