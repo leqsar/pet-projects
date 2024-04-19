@@ -67,6 +67,10 @@
   margin-top: 14px;
 }
 
+.hamburger {
+  display: none;
+}
+
 @media screen and (max-width: 950px) {
   .wrapper {
     margin-top: 0;
@@ -99,5 +103,86 @@
 @media screen and (max-width: 585px) {
   .linksWrapper {
     width: 80%;
+  }
+
+  .icon {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .wrapper {
+    z-index: 10;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .linksWrapper {
+    display: none;
+    padding-right: 0;
+  }
+
+  .linkWrapper {
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  .linkWrapper:first-of-type {
+    margin-top: 0;
+  }
+
+  .number {
+    display: block;
+    font-size: 20px;
+  }
+
+  .name {
+    margin-left: 14px;
+    font-size: 20px;
+  }
+
+  .hamburger, .crossIcon {
+    display: block;
+    position: absolute;
+    right: 6%;
+    top: 40px;
+  }
+
+  .hamburger:hover,
+  .crossIcon:hover {
+    cursor: pointer;
+  }
+
+  .hamburgerHidden {
+    display: none;
+  }
+
+  .hamburgerMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: unset;
+    height: 100vh;
+    padding-top: 118px;
+    backdrop-filter: blur(20px);
+  }
+
+  .activeLink::after {
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    border-right: 4px #ffffff solid;
+  }
+
+  .linkWrapper::after {
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    border-right: 4px #979797 solid;
   }
 }

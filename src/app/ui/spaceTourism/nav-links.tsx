@@ -2,8 +2,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from '@/app/ui/spaceTourism/navigation.module.css'
+import Image from 'next/image';
 import clsx from 'clsx';
-import { barlow, barlowCondensed, bellefair } from '@/app/ui/fonts';
+import { barlowCondensed } from '@/app/ui/fonts';
 
 const links = [
   { name: 'Home', href: '/projects/spaceTourism', number: "00" },
@@ -12,11 +13,27 @@ const links = [
   { name: 'Technology', href: '/projects/spaceTourism/technology', number: "03" },
 ];
 
-export default function NavLinks() {
+export default function NavLinks({ isMenuOpen, handleClose }: {
+  isMenuOpen: boolean,
+  handleClose: Function,
+}) {
   const pathname = usePathname();
 
   return (
-    <div className={styles.linksWrapper}>
+    <div className={clsx(styles.linksWrapper, {
+      [styles.hamburgerMenu] : isMenuOpen
+    })}>
+      {isMenuOpen
+        ? <Image 
+          src="/space-tourism/shared/icon-close.svg"
+          width={19}
+          height={19}
+          className={styles.crossIcon}
+          onClick={() => handleClose()}
+          alt="Cross icon"
+        />
+        : null
+      }
       {links.map((link) => {
         return (
           <Link
@@ -25,6 +42,7 @@ export default function NavLinks() {
             className={clsx( styles.linkWrapper, barlowCondensed.className, {
                 [styles.activeLink]: pathname === link.href,
             })}
+            onClick={() => handleClose()}
           >
             <p className={styles.number}>{link.number}</p>
             <p className={styles.name}>{link.name}</p>

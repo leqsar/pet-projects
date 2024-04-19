@@ -115,7 +115,7 @@
   .page {
     justify-content: center;
     height: auto;
-    background-image: url('/space-tourism/destination/background-destination-mobile.jpg')
+    background-image: url('/space-tourism/destination/background-destination-mobile.jpg');
   }
 
   .headingWrapper {

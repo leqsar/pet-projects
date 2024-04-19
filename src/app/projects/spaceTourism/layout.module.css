@@ -4,9 +4,3 @@
   background-color: #0B0F1A;
   color: #ffffff;
 }
-
-@media screen and (max-width: 950px) {
-  .page {
-    height: auto;
-  }
-}
