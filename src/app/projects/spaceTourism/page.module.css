@@ -91,7 +91,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .page {
     min-height: 667px;
     height: auto;

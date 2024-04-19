@@ -2,6 +2,7 @@
   width: 100vw;
   height: 100vh;
   background-color: #0B0F1A;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 950px) {

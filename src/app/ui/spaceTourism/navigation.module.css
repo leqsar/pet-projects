@@ -66,3 +66,38 @@
   margin-left: 55px;
   margin-top: 14px;
 }
+
+@media screen and (max-width: 950px) {
+  .wrapper {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .icon {
+    margin-top: 24px;
+  }
+
+  .linksWrapper {
+    position: absolute;
+    margin-left: 0;
+    width: 60%;
+    right: 0;
+    padding: 0 48px;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(2px);
+  }
+
+  .number {
+    display: none;
+  }
+
+  .name {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .linksWrapper {
+    width: 80%;
+  }
+}

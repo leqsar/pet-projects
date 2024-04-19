@@ -95,7 +95,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .page {
     padding: 0 6%;
     height: auto;
