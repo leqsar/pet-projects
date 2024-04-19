@@ -1,5 +1,5 @@
 import styles from './page.module.css'
-import Card from '../ui/readyComponents/card'
+import Card from '../ui/card'
 
 export default function CardsWrapper() {
   return (

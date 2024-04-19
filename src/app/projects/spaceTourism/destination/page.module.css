@@ -1,0 +1,133 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1440px;
+  height: 900px;
+  padding: 0 11.5%;
+  background-image: url('/space-tourism/destination/background-destination-desktop.jpg')
+}
+
+.headingWrapper {
+  display: flex;
+  margin-top: 212px;
+}
+
+.number, .heading {
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.number { 
+  color: #979797;
+  font-weight: 600;
+}
+
+.heading {
+  margin-left: 28px;
+  color: #ffffff;
+  font-weight: 300;
+  letter-spacing: 5px;
+}
+
+.navigationWrapper {
+  width: 26%;
+  margin-left: 60%;
+  margin-top: 64px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.destination {
+  position: relative;
+  font-size: 16px;
+  color:#D0D6F9;
+  text-transform: uppercase;
+  list-style-type: none;
+  letter-spacing: 2px;
+}
+
+.destination:after {
+  content: '';
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 30px;
+  width: 100%;
+  height: 1px;
+  border-bottom: 2px #979797 solid;
+}
+
+.destination:hover {
+  cursor: pointer;
+}
+
+.destination:hover:after {
+  display: block;
+}
+
+.activeDestination {
+  color: #ffffff;
+}
+
+.activeDestination:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 30px;
+  width: 100%;
+  height: 1px;
+  border-bottom: 2px #ffffff solid;
+}
+
+@media screen and (max-width: 950px) {
+  .page {
+    padding: 0 12%;
+    height: 100%;
+    background-size: 100% 100%;
+  }
+
+  .headingWrapper {
+    margin-top: 136px;
+  }
+
+  .number, .heading {
+    font-size: 20px;
+  }
+
+  .navigationWrapper {
+    position: absolute;
+    width: 40%;
+    margin-left: 0;
+    margin-top: 0;
+    left: 50%;
+    top: 573px;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .page {
+    justify-content: center;
+    height: auto;
+    background-image: url('/space-tourism/destination/background-destination-mobile.jpg');
+  }
+
+  .headingWrapper {
+    margin-top: 88px;
+  }
+
+  .number, .heading {
+    font-size: 16px;
+  }
+
+  .navigationWrapper {
+    width: 60%;
+    top: 335px;
+  }
+}

@@ -1,0 +1,123 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1440px;
+  height: 900px;
+  padding: 0 11.5%;
+  padding-right: 0;
+  background-image: url('/space-tourism/technology/background-technology-desktop.jpg')
+}
+
+.headingWrapper {
+  display: flex;
+  margin-top: 212px;
+}
+
+.number, .heading {
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.number { 
+  color: #979797;
+  font-weight: 600;
+}
+
+.heading {
+  margin-left: 28px;
+  color: #ffffff;
+  font-weight: 300;
+  letter-spacing: 5px;
+}
+
+.main {
+  display: flex;
+  margin-top: 137px;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.pageNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border: 1px rgba(255, 255, 255, 0.25) solid;
+  border-radius: 50%;
+  font-size: 32px;
+  list-style-type: none;
+}
+
+.pageNumber:hover {
+  border: 1px #ffffff solid;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+@media screen and (max-width: 950px) {
+  .page {
+    padding: 0 12%;
+    height: 100%;
+    background-size: 100% 100%;
+  }
+
+  .headingWrapper {
+    margin-top: 136px;
+  }
+
+  .number, .heading {
+    font-size: 20px;
+  }
+
+  .pagination {
+    position: absolute;
+    top: 570px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    flex-direction: row;
+    z-index: 10;
+  }
+
+  .pageNumber {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .page {
+    padding: 0 6%;
+    height: auto;
+    align-items: center;
+    background-image: url('/space-tourism/technology/background-technology-mobile.jpg')
+}
+
+  .headingWrapper {
+    margin-top: 88px;
+  }
+
+  .number, .heading {
+    font-size: 16px;
+  }
+
+  .pagination {
+    top: 343px;
+  }
+
+  .pageNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
