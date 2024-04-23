@@ -1,0 +1,33 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #EDF2F4;
+}
+
+.link {
+  width: 20%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #EF233C;
+  color: #EDF2F4;
+  border: none;
+  font-size: 5em;
+  text-transform: uppercase;
+  transition-property: box-shadow;
+  transition-duration: 0.5s;
+}
+
+.button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 100px rgba(239, 35, 60, 0.15), 0 0 0 200px rgba(141, 153, 174, 0.15);
+}

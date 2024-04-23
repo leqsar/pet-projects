@@ -1,0 +1,79 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #2B2D42;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 60%;
+  height: 480px;
+  background-color: #EDF2F4;
+  border-radius: 30px;
+  padding: 5%;
+  color: #EDF2F4;
+  font-weight: bold;
+}
+
+.settingWrapper {
+  width: 100%;
+}
+
+.heading {
+  color: #2B2D42;
+  font-size: 16px;
+}
+
+.themeWrapper,
+.playersWrapper,
+.sizesWrappers {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.theme,
+.number,
+.size {
+  width: 47%;
+  height: 50px;
+  border-radius: 25px;
+  font-size: 20px;
+  text-align: center;
+  background-color: #8D99AE;
+  padding-top: 14px;
+}
+
+.theme:hover,
+.number:hover,
+.size:hover,
+.chosen {
+  cursor: pointer;
+  background-color: #2B2D42;
+}
+
+.number {
+  width: 23%;
+}
+
+.button {
+  width: 100%;
+  height: 80px;
+  border-radius: 40px;
+  background-color: #EF233C;
+  font-size: 28px;
+  font-weight: bold;
+  border: none;
+  transition-duration: 0.4s;
+  transition-property: all;
+}
+
+.button:hover {
+  cursor: pointer;
+  transform: scale(0.95);
+}
