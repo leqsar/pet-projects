@@ -1,11 +1,15 @@
 'use client'
 import styles from '@/app/projects/memo/game/page.module.css'
-import { useRouter } from 'next/router'
+import { useEffect } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation'
 
 export default function Game() {
-  const router = useRouter();
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
-  const { theme, playersNumber, gridSize } = router.query;
-
-  console.log(theme, playersNumber, gridSize)
+  useEffect(() => {
+    console.log(searchParams.get('theme'))
+    console.log(searchParams.get('playersNumber'))
+    console.log(searchParams.get('gridSize'))
+  }, [searchParams]);
 }

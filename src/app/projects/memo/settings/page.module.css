@@ -71,6 +71,7 @@
   border: none;
   transition-duration: 0.4s;
   transition-property: all;
+  text-align: center;
 }
 
 .button:hover {
