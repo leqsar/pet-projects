@@ -1,15 +1,9 @@
 'use client'
-import styles from '@/app/projects/memo/settings/page.module.css'
-import { useState } from 'react'
-import { MouseEvent } from 'react'
-import Link from 'next/link'
-import clsx from 'clsx'
-
-type Settings = {
-  theme: 'numbers' | 'icons' | '';
-  playersNumber: '1' | '2' | '3' | '4' | '';
-  gridSize: '4' | '6' | '';
-}
+import styles from '@/app/projects/memo/settings/page.module.css';
+import { useState } from 'react';
+import Link from 'next/link';
+import clsx from 'clsx';
+import type { Settings } from '@/app/utils/constants/memo/types';
 
 export default function Settings() {
   const [settings, setSettings] = useState<Settings>({

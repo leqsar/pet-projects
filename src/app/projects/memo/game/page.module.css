@@ -1,0 +1,63 @@
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #EDF2F4;
+}
+
+.page main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.field {
+  display: grid;
+  margin-top: 100px;
+  width: 50%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  grid-gap: 30px;
+}
+
+.size16 {
+  grid-template-columns: repeat(4, 0.8fr);
+  grid-template-rows: repeat(4, 0.8fr);
+}
+
+.size36 {
+  grid-template-columns: repeat(6, 0.8fr);
+  grid-template-rows: repeat(6, 0.8fr);
+}
+
+.stats {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translate(-50%, 0);
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  height: 80px;
+  gap: 100px;
+}
+
+.soloStats {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.soloStats p {
+  width: 160px;
+  height: 100%;
+  padding: 28px 20px;
+  border-radius: 10%;
+  background-color: #8D99AE;
+  font-size: 20px;
+  font-weight: bold;
+  color: #EDF2F4;
+  text-align: center;
+}
