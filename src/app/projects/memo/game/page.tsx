@@ -10,6 +10,8 @@ import randomizeArray from '@/app/utils/constants/memo/randomizeArray';
 import checkMatch from '@/app/utils/constants/memo/chechMatch';
 import generatePlayersArray from '@/app/utils/constants/memo/generatePlayers';
 import passPlayersTurn from '@/app/utils/constants/memo/passPlayersTurn';
+import Result from '@/app/ui/memo/result';
+import sortPlayers from '@/app/utils/constants/memo/sortPlayers';
 
 export default function Game() {
   const searchParams = useSearchParams();
@@ -31,12 +33,21 @@ export default function Game() {
     throw new Error('Ooops, something went wrong');
   }
 
-  // generates game according to chosen settings
-  useEffect(() => {
+  function restart() {
+    setIsGameOver(false);
+    start();
+  }
+
+  function start() {
     const cardsArray = generateNumbersArray(gridArea, theme);
     const playersArray = generatePlayersArray(playersNumber);
     setCardsArray(randomizeArray(cardsArray));
     setPlayersArray(playersArray);
+  }
+
+  // generates game according to chosen settings
+  useEffect(() => {
+    start();
   }, [gridArea, theme, playersNumber])
 
   // finishes the game if all cards are opened
@@ -92,6 +103,7 @@ export default function Game() {
           <button className={styles.newGameButton}>New Game</button>
         </nav>
       </header>
+      {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart}/> : null}
       <main>
         <div className={`${styles.field} ${styles['size'+gridArea]}`}>
           {cardsArray.map((card) => {

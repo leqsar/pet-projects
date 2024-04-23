@@ -1,0 +1,76 @@
+.popupWrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(43, 45, 66, 0.3);
+  z-index: 2;
+}
+
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+  padding: 40px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+  background-color: #EDF2F4;
+}
+
+.heading {
+  font-size: 40px;
+  color: #2B2D42;
+}
+
+.subheading {
+  margin-top: 20px;
+  color: #2B2D42
+}
+
+.resultsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 310px;
+  margin-top: 30px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.buttonsWrapper button,
+.newGameButton {
+  width: 48%;
+  height: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px 0;
+  border-radius: 25px;
+  border: none;
+  text-align: center;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.buttonsWrapper button:hover {
+  cursor: pointer;
+  transform: scale(0.95);
+}
+
+.restartButton {
+  background-color: #EF233C;
+}
+
+.newGameButton {
+  background-color: #8D99AE;
+  color: #2B2D42;
+}
