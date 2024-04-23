@@ -18,7 +18,6 @@ export default function Card({card, theme, handleCardClick} : CardProps) {
   }
   return (
     <div 
-      key={card.content}
       onClick={handleClick}
       className={clsx(styles.card, {
         [styles.open] : card.isOpen,

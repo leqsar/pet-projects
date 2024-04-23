@@ -18,30 +18,43 @@ export default function Game() {
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [openCardsIndexes, setOpenCardsIndexes] = useState<number[] | []>([]);
   const [clickable, setClickable] = useState(true);
+  const [totalPoints, setTotalPoints] = useState(0);
+  const [isGameOver, setIsGameOver] = useState(false);
 
   const theme = searchParams.get('theme') as Theme;
   const playersNumber = Number(searchParams.get('playersNumber'));
   const gridSize = Number(searchParams.get('gridSize'));
   const gridArea = gridSize*gridSize;
+  const sumOfPoints = gridArea/2;
 
   if(!theme || !playersNumber || !gridSize) {
     throw new Error('Ooops, something went wrong');
   }
 
+  // generates game according to chosen settings
   useEffect(() => {
     const cardsArray = generateNumbersArray(gridArea, theme);
     const playersArray = generatePlayersArray(playersNumber);
     setCardsArray(randomizeArray(cardsArray));
-    console.log(playersArray);
     setPlayersArray(playersArray);
   }, [gridArea, theme, playersNumber])
 
+  // finishes the game if all cards are opened
+  useEffect(() => {
+    if(totalPoints === sumOfPoints) setIsGameOver(true);
+  }, [totalPoints, sumOfPoints])
+
+  // processes every turn result (where each turn finishes after 2 cards are opened)
   useEffect(() => {
     if(openCardsIndexes.length === 2) {
       const arrCopy = [...cardsArray];
       setClickable(false);
       setTimeout(() => {
         if(checkMatch(cardsArray, openCardsIndexes)) {
+          const playersArrCopy = [...playersArray];
+          playersArrCopy[currentPlayer-1].score++;
+          setPlayersArray(playersArrCopy);
+          setTotalPoints(totalPoints+1);
           openCardsIndexes.map((index) => {
             arrCopy[index].isLocked = true;
           })
@@ -56,7 +69,7 @@ export default function Game() {
         setCurrentPlayer(passPlayersTurn(playersArray, currentPlayer));
       }, 1000)
     }
-  }, [openCardsIndexes, cardsArray, playersArray, currentPlayer])
+  }, [openCardsIndexes, cardsArray, playersArray, currentPlayer, totalPoints])
 
   const handleCardClick = (number: number) => {
     if(clickable) {
@@ -84,7 +97,7 @@ export default function Game() {
           {cardsArray.map((card) => {
             return (
               <Card
-                key={card.content}
+                key={card.number}
                 card={card}
                 theme={theme}
                 handleCardClick={handleCardClick}
