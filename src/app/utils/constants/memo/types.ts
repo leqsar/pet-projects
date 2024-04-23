@@ -17,7 +17,7 @@ export type Settings = {
   gridSize: GridSize | '';
 }
 
-export type Stats = {
+export type Player = {
   score: number,
   playerNumber: number
 }

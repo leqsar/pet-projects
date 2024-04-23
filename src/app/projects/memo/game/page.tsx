@@ -3,17 +3,19 @@ import styles from '@/app/projects/memo/game/page.module.css';
 import { useSearchParams } from 'next/navigation';
 import StatsCard from '@/app/ui/memo/inGameStatsCard';
 import generateNumbersArray from '@/app/utils/constants/memo/generateNumbersArray';
-import type { CardType, Theme, Stats } from '@/app/utils/constants/memo/types';
+import type { CardType, Theme, Player } from '@/app/utils/constants/memo/types';
 import Card from '@/app/ui/memo/card';
 import { useEffect, useState } from 'react';
 import randomizeArray from '@/app/utils/constants/memo/randomizeArray';
 import checkMatch from '@/app/utils/constants/memo/chechMatch';
 import generatePlayersArray from '@/app/utils/constants/memo/generatePlayers';
+import passPlayersTurn from '@/app/utils/constants/memo/passPlayersTurn';
 
 export default function Game() {
   const searchParams = useSearchParams();
   const [cardsArray, setCardsArray] = useState<CardType[] | []>([]);
-  const [playersArray, setPlayersArray] = useState<Stats[] | []>([]);
+  const [playersArray, setPlayersArray] = useState<Player[] | []>([]);
+  const [currentPlayer, setCurrentPlayer] = useState(1);
   const [openCardsIndexes, setOpenCardsIndexes] = useState<number[] | []>([]);
   const [clickable, setClickable] = useState(true);
 
@@ -48,13 +50,13 @@ export default function Game() {
             arrCopy[index].isOpen = false;
           })
         }
-        
         setCardsArray(arrCopy);
         setOpenCardsIndexes([]);
         setClickable(true);
+        setCurrentPlayer(passPlayersTurn(playersArray, currentPlayer));
       }, 1000)
-      }
-    }, [openCardsIndexes, cardsArray])
+    }
+  }, [openCardsIndexes, cardsArray, playersArray, currentPlayer])
 
   const handleCardClick = (number: number) => {
     if(clickable) {
@@ -94,7 +96,7 @@ export default function Game() {
       <footer className={styles.stats}>
         {playersArray.length > 1
           ? playersArray.map((player) => {
-              return <StatsCard player={player} key={player.playerNumber}/>
+              return <StatsCard player={player} key={player.playerNumber} currentPlayer={currentPlayer}/>
             })
           : <div className={styles.soloStats}>
               <p className={styles.time}>0:00</p>

@@ -1,8 +1,8 @@
-import { Stats } from "./types";
+import { Player } from "./types";
 
-export default function generatePlayersArray(arrSize: number):Stats[] {
+export default function generatePlayersArray(arrSize: number):Player[] {
   const playersArr = [];
-  for (let i = 0; i < arrSize; i++) {
+  for (let i = 1; i < arrSize+1; i++) {
     playersArr.push({
       score: 0,
       playerNumber: i
