@@ -74,3 +74,27 @@
   background-color: #8D99AE;
   color: #2B2D42;
 }
+
+@media screen and (max-width: 550px) {
+  .popup {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .popup {
+    width: 90%;
+    padding: 30px 20px;
+  }
+
+  .buttonsWrapper {
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .buttonsWrapper button,
+  .newGameButton {
+    width: 100%;
+  }
+}

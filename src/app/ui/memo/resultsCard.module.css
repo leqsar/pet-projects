@@ -29,3 +29,18 @@
   font-size: 16px;
   margin-left: 5px;
 }
+
+
+@media screen and (max-width: 550px) {
+  .stats {
+    padding: 0 10px;
+  }
+
+  .score {
+    font-size: 22px;
+  }
+
+  .player {
+    font-size: 15px;
+  }
+}

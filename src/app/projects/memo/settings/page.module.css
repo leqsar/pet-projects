@@ -79,3 +79,16 @@
   cursor: pointer;
   transform: scale(0.95);
 }
+
+@media screen and (max-width: 650px) {
+  .settings {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .settings {
+    width: 90%;
+    padding: 30px;
+  }
+}

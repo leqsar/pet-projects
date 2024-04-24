@@ -12,7 +12,7 @@ import generatePlayersArray from '@/app/utils/helpers/memo/generatePlayers';
 import passPlayersTurn from '@/app/utils/helpers/memo/passPlayersTurn';
 import Result from '@/app/ui/memo/result';
 import sortPlayers from '@/app/utils/helpers/memo/sortPlayers';
-import Link from 'next/link';
+import Header from '@/app/ui/memo/header';
 
 export default function Game() {
   const [cardsArray, setCardsArray] = useState<CardType[] | []>([]);
@@ -98,13 +98,7 @@ export default function Game() {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <h1>memo</h1>
-        <nav className={styles.navigation}>
-          <button className={styles.restartButton} onClick={restart}>Restart</button>
-          <Link href='/projects/memo/settings' className={styles.newGameButton}>New Game</Link>
-        </nav>
-      </header>
+      <Header restart={restart}/>
       {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart}/> : null}
       <main>
         <div className={`${styles.field} ${styles['size'+gridArea]}`}>

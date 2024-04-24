@@ -48,3 +48,27 @@
 .player {
   font-size: 16px;
 }
+
+@media screen and (max-width: 650px) {
+  .statsWrapper {
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 10px;
+  }
+
+  .active:after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .statsWrapper {
+    height: 60px;
+  }
+
+  .active:before {
+    width: 15px;
+    height: 15px;
+    top: -7px;
+  }
+}

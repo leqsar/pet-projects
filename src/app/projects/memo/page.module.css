@@ -31,3 +31,22 @@
   cursor: pointer;
   box-shadow: 0 0 0 100px rgba(239, 35, 60, 0.15), 0 0 0 200px rgba(141, 153, 174, 0.15);
 }
+
+@media screen and (max-width: 1200px) {
+  .link {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .link {
+    width: 50%;
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .link {
+    width: 60%;
+  }
+}

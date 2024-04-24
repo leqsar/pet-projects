@@ -1,0 +1,135 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.heading {
+  font-size: 40px;
+  font-weight: bold;
+  color: #2B2D42;
+}
+
+.heading:hover {
+  cursor: pointer;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.shadow {
+  display: none;
+}
+
+.navigation button,
+.newGameButton {
+  width: 200px;
+  height: 45px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 2px;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.navigation .cross {
+  display: none;
+}
+
+.restartButton {
+  background-color: #EF233C;
+}
+
+.newGameButton {
+  background-color: #8D99AE;
+  text-align: center;
+  padding-top: 12px;
+}
+
+.navigation button:hover,
+.newGameButton:hover {
+  cursor: pointer;
+  transform: scale(0.95);
+}
+
+.menuButton {
+  display: none;
+  width: 100px;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #EF233C;
+}
+
+@media screen and (max-width: 650px) {
+  .stats {
+    width: 90%;
+    gap: 20px;
+  }
+
+  .soloStats {
+    width: 80%;
+  }
+
+  .navigation {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    flex-direction: column;
+    width: 70%;
+    height: 240px;
+    padding: 60px 20px 40px 20px;
+    border-radius: 20px;
+    display: none;
+    background-color: #EDF2F4;
+    z-index: 4;
+  }
+
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(141, 153, 174, 0.4);
+    z-index: 3;
+  }
+
+  .activeShadow {
+    display: block;
+  }
+
+  .navigation button,
+  .newGameButton {
+    width: 100%;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .navigation .cross {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    margin-top: 0;
+    border: none;
+    background-color: transparent;
+  }
+
+  .activeMenu {
+    display: flex;
+  }
+
+  .menuButton {
+    display: block;
+  }
+}
