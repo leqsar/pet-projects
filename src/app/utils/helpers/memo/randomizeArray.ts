@@ -1,4 +1,4 @@
-import type { CardType } from "./types";
+import type { CardType } from "../../constants/memo/types";
 
 export default function randomizeArray(array : CardType[]) : CardType[] {
   let shuffledArray = array

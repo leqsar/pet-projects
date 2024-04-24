@@ -2,7 +2,6 @@ import type { CardType, Theme } from "@/app/utils/constants/memo/types";
 import clsx from "clsx";
 import styles from '@/app/ui/memo/card.module.css';
 import Image from "next/image";
-import { MouseEventHandler } from "react";
 
 type CardProps = {
   card: CardType,
@@ -12,7 +11,7 @@ type CardProps = {
 
 export default function Card({card, theme, handleCardClick} : CardProps) {
   const handleClick = () => {
-    if(!card.isLocked && !card.isOpen) {
+    if(!card.isLocked && !card.isOpen && card.number) {
       handleCardClick(card.number);
     }
   }

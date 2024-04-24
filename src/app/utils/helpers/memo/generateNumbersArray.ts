@@ -1,4 +1,4 @@
-import { CardType, Theme } from "./types";
+import { CardType, Theme } from "../../constants/memo/types";
 
 export default function generateNumbersArray(size: number, theme: Theme) : CardType[] {
   const arr = [];

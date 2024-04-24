@@ -1,4 +1,4 @@
-import { Player } from "./types";
+import { Player } from "../../constants/memo/types";
 
 export default function generatePlayersArray(arrSize: number):Player[] {
   const playersArr = [];

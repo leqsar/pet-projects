@@ -1,4 +1,4 @@
-import { CardType } from "./types";
+import { CardType } from "../../constants/memo/types";
 
 export default function checkMatch(cardsArr: CardType[], indexesArr: number[]): boolean {
   const chosenCards = indexesArr.map((index) => {

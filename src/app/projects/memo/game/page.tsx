@@ -2,19 +2,18 @@
 import styles from '@/app/projects/memo/game/page.module.css';
 import { useSearchParams } from 'next/navigation';
 import StatsCard from '@/app/ui/memo/inGameStatsCard';
-import generateNumbersArray from '@/app/utils/constants/memo/generateNumbersArray';
+import generateNumbersArray from '@/app/utils/helpers/memo/generateNumbersArray';
 import type { CardType, Theme, Player } from '@/app/utils/constants/memo/types';
 import Card from '@/app/ui/memo/card';
-import { useEffect, useState } from 'react';
-import randomizeArray from '@/app/utils/constants/memo/randomizeArray';
-import checkMatch from '@/app/utils/constants/memo/chechMatch';
-import generatePlayersArray from '@/app/utils/constants/memo/generatePlayers';
-import passPlayersTurn from '@/app/utils/constants/memo/passPlayersTurn';
+import { useEffect, useState, useCallback } from 'react';
+import randomizeArray from '@/app/utils/helpers/memo/randomizeArray';
+import checkMatch from '@/app/utils/helpers/memo/chechMatch';
+import generatePlayersArray from '@/app/utils/helpers/memo/generatePlayers';
+import passPlayersTurn from '@/app/utils/helpers/memo/passPlayersTurn';
 import Result from '@/app/ui/memo/result';
-import sortPlayers from '@/app/utils/constants/memo/sortPlayers';
+import sortPlayers from '@/app/utils/helpers/memo/sortPlayers';
 
 export default function Game() {
-  const searchParams = useSearchParams();
   const [cardsArray, setCardsArray] = useState<CardType[] | []>([]);
   const [playersArray, setPlayersArray] = useState<Player[] | []>([]);
   const [currentPlayer, setCurrentPlayer] = useState(1);
@@ -22,33 +21,34 @@ export default function Game() {
   const [clickable, setClickable] = useState(true);
   const [totalPoints, setTotalPoints] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
-
+  // getting settings from query parameters
+  const searchParams = useSearchParams();
   const theme = searchParams.get('theme') as Theme;
   const playersNumber = Number(searchParams.get('playersNumber'));
   const gridSize = Number(searchParams.get('gridSize'));
   const gridArea = gridSize*gridSize;
   const sumOfPoints = gridArea/2;
-
+  
   if(!theme || !playersNumber || !gridSize) {
     throw new Error('Ooops, something went wrong');
   }
 
-  function restart() {
-    setIsGameOver(false);
-    start();
-  }
-
-  function start() {
+  // generates game according to chosen settings
+  const startGame = useCallback(() => {
     const cardsArray = generateNumbersArray(gridArea, theme);
     const playersArray = generatePlayersArray(playersNumber);
     setCardsArray(randomizeArray(cardsArray));
     setPlayersArray(playersArray);
+  }, [gridArea, theme, playersNumber])
+
+  function restart() {
+    setIsGameOver(false);
+    startGame();
   }
 
-  // generates game according to chosen settings
   useEffect(() => {
-    start();
-  }, [gridArea, theme, playersNumber])
+    startGame();
+  }, [startGame])
 
   // finishes the game if all cards are opened
   useEffect(() => {
@@ -84,13 +84,13 @@ export default function Game() {
 
   const handleCardClick = (number: number) => {
     if(clickable) {
-      const cardIndex = cardsArray.findIndex((card) => card.number === number);
-      const card = cardsArray[cardIndex];
-      card.isOpen = true;
-      const arrCopy = [...cardsArray];
-      arrCopy.splice(cardIndex, 1, card);
-      setCardsArray(arrCopy);
-      setOpenCardsIndexes([...openCardsIndexes, cardIndex])
+      setCardsArray((prevCardsArray) => {
+        return prevCardsArray.map((card) => card.number === number ? {...card, isOpen:true}: card)
+      });
+      setOpenCardsIndexes([
+        ...openCardsIndexes,
+        cardsArray.findIndex((card) => card.number === number)
+      ])
     }
   }
 

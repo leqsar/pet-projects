@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import type { Settings } from '@/app/utils/constants/memo/types';
+import { themesArray, sizesArray, playersArray } from '@/app/utils/constants/memo/settings';
 
 export default function Settings() {
   const [settings, setSettings] = useState<Settings>({
@@ -25,7 +26,7 @@ export default function Settings() {
         <div className={styles.settingWrapper}>
           <p className={styles.heading}>Select Theme</p>
           <div className={styles.themeWrapper}>
-            {['Numbers', 'Icons'].map(theme => (
+            {themesArray.map(theme => (
               <p 
                 key={theme} 
                 onClick={() => handleChange('theme', theme)}
@@ -39,7 +40,7 @@ export default function Settings() {
         <div className={styles.settingWrapper}>
           <p className={styles.heading}>Number of Players</p>
           <div className={styles.playersWrapper}>
-            {['1', '2', '3', '4'].map(num => (
+            {playersArray.map(num => (
               <p 
                 key={num} 
                 onClick={() => handleChange('playersNumber', num)}
@@ -53,7 +54,7 @@ export default function Settings() {
         <div className={styles.settingWrapper}>
           <p className={styles.heading}>Grid size</p>
           <div className={styles.sizesWrappers}>
-            {['4', '6'].map(size => (
+            {sizesArray.map(size => (
               <p 
                 key={size} 
                 onClick={() => handleChange('gridSize', size)}
