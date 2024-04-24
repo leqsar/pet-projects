@@ -7,6 +7,51 @@
   background-color: #EDF2F4;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.header h1 {
+  color: #2B2D42;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.navigation button,
+.newGameButton {
+  width: 200px;
+  height: 45px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 2px;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.restartButton {
+  background-color: #EF233C;
+}
+
+.newGameButton {
+  background-color: #8D99AE;
+  text-align: center;
+  padding-top: 12px;
+}
+
+.navigation button:hover,
+.newGameButton:hover {
+  cursor: pointer;
+  transform: scale(0.95);
+}
+
 .page main {
   display: flex;
   justify-content: center;
@@ -16,7 +61,7 @@
 .field {
   display: grid;
   margin-top: 100px;
-  width: 50%;
+  width: clamp(500px, 50%, 650px);
   height: auto;
   aspect-ratio: 1 / 1;
   grid-gap: 30px;

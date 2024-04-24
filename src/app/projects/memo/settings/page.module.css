@@ -11,11 +11,11 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
-  width: 60%;
+  width: clamp(590px, 60%, 800px);
   height: 480px;
   background-color: #EDF2F4;
   border-radius: 30px;
-  padding: 5%;
+  padding: 50px;
   color: #EDF2F4;
   font-weight: bold;
 }
@@ -63,7 +63,8 @@
 
 .button {
   width: 100%;
-  height: 80px;
+  height: 60px;
+  padding: 15px 0;
   border-radius: 40px;
   background-color: #EF233C;
   font-size: 28px;

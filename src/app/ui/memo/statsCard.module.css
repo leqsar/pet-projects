@@ -12,7 +12,33 @@
 }
 
 .active {
+  position: relative;
   background-color: #EF233C;
+}
+
+.active:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: #EF233C;
+  transform: translate(-50%, 0) rotate(45deg);
+}
+
+.active:after {
+  content: 'Current turn';
+  position: absolute;
+  left: 50%;
+  bottom: -25px;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  color: #2B2D42;
+  font-size: 12px;
+  letter-spacing: 3px;
+  transform: translate(-50%, 0);
 }
 
 .score {

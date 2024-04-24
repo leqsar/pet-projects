@@ -12,6 +12,7 @@ import generatePlayersArray from '@/app/utils/helpers/memo/generatePlayers';
 import passPlayersTurn from '@/app/utils/helpers/memo/passPlayersTurn';
 import Result from '@/app/ui/memo/result';
 import sortPlayers from '@/app/utils/helpers/memo/sortPlayers';
+import Link from 'next/link';
 
 export default function Game() {
   const [cardsArray, setCardsArray] = useState<CardType[] | []>([]);
@@ -44,6 +45,7 @@ export default function Game() {
   function restart() {
     setIsGameOver(false);
     startGame();
+    setCurrentPlayer(1);
   }
 
   useEffect(() => {
@@ -99,8 +101,8 @@ export default function Game() {
       <header className={styles.header}>
         <h1>memo</h1>
         <nav className={styles.navigation}>
-          <button className={styles.restartButton}>Restart</button>
-          <button className={styles.newGameButton}>New Game</button>
+          <button className={styles.restartButton} onClick={restart}>Restart</button>
+          <Link href='/projects/memo/settings' className={styles.newGameButton}>New Game</Link>
         </nav>
       </header>
       {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart}/> : null}
