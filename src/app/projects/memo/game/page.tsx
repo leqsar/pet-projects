@@ -1,41 +1,37 @@
 'use client'
 import styles from '@/app/projects/memo/game/page.module.css';
 import { useSearchParams } from 'next/navigation';
-import StatsCard from '@/app/ui/memo/inGameStatsCard';
-import generateNumbersArray from '@/app/utils/helpers/memo/generateNumbersArray';
 import type { CardType, Theme, Player } from '@/app/utils/constants/memo/types';
-import Card from '@/app/ui/memo/card';
 import { useEffect, useState, useCallback, Suspense } from 'react';
+import generateNumbersArray from '@/app/utils/helpers/memo/generateNumbersArray';
 import randomizeArray from '@/app/utils/helpers/memo/randomizeArray';
 import checkMatch from '@/app/utils/helpers/memo/chechMatch';
 import generatePlayersArray from '@/app/utils/helpers/memo/generatePlayers';
-import passPlayersTurn from '@/app/utils/helpers/memo/passPlayersTurn';
-import Result from '@/app/ui/memo/result';
 import sortPlayers from '@/app/utils/helpers/memo/sortPlayers';
+import passPlayersTurn from '@/app/utils/helpers/memo/passPlayersTurn';
 import Header from '@/app/ui/memo/header';
+import Card from '@/app/ui/memo/card';
+import StatsCard from '@/app/ui/memo/inGameStatsCard';
+import Result from '@/app/ui/memo/result';
 import DefeatModal from '@/app/ui/memo/defeatModal';
 
 function Game() {
   const [cardsArray, setCardsArray] = useState<CardType[] | []>([]);
-  const [playersArray, setPlayersArray] = useState<Player[] | []>([]);
-  const [currentPlayer, setCurrentPlayer] = useState(1);
   const [openCardsIndexes, setOpenCardsIndexes] = useState<number[] | []>([]);
   const [clickable, setClickable] = useState(true);
+  const [playersArray, setPlayersArray] = useState<Player[] | []>([]);
+  const [currentPlayer, setCurrentPlayer] = useState(1);
   const [totalTurns, setTotalTurns] = useState(0);
   const [totalPoints, setTotalPoints] = useState(0);
-  const [isGameOver, setIsGameOver] = useState(false);
   const [timeLeft, setTimeLeft] = useState(120);
+  const [isGameOver, setIsGameOver] = useState(false);
   // getting settings from query parameters
   const searchParams = useSearchParams();
   const theme = searchParams.get('theme') as Theme;
   const playersNumber = Number(searchParams.get('playersNumber'));
   const gridSize = Number(searchParams.get('gridSize'));
-  const gridArea = gridSize*gridSize;
-  const sumOfPoints = gridArea/2;
-  
-  if(!theme || !playersNumber || !gridSize) {
-    throw new Error('Ooops, something went wrong');
-  }
+  const gridArea = gridSize * gridSize;
+  const sumOfPoints = gridArea / 2;
 
   // generates game according to chosen settings
   const startGame = useCallback(() => {
@@ -52,6 +48,7 @@ function Game() {
     setTimeLeft(120);
     setCurrentPlayer(1);
     setTotalTurns(0);
+    setTotalPoints(0);
   }
 
   useEffect(() => {

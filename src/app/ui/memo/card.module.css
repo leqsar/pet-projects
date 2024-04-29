@@ -62,3 +62,21 @@
 .locked .icon {
   display: block;
 }
+
+@media screen and (max-width: 1100px) {
+  .card {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card {
+    font-size: 2rem;
+  }
+}
