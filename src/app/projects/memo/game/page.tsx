@@ -15,7 +15,7 @@ import sortPlayers from '@/app/utils/helpers/memo/sortPlayers';
 import Header from '@/app/ui/memo/header';
 import DefeatModal from '@/app/ui/memo/defeatModal';
 
-export default function Game() {
+function Game() {
   const [cardsArray, setCardsArray] = useState<CardType[] | []>([]);
   const [playersArray, setPlayersArray] = useState<Player[] | []>([]);
   const [currentPlayer, setCurrentPlayer] = useState(1);
@@ -45,7 +45,7 @@ export default function Game() {
     setPlayersArray(playersArray);
   }, [gridArea, theme, playersNumber])
 
-  function restart() {
+  const restart = () => {
     setIsGameOver(false);
     setOpenCardsIndexes([]);
     startGame();
@@ -126,37 +126,43 @@ export default function Game() {
   }
 
   return (
-    <Suspense>
-      <div className={styles.page}>
-        <Header restart={restart}/>
-        {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart} totalTurns={totalTurns}/> : null}
-        {timeLeft === 0 ? <DefeatModal totalTurns={totalTurns} restart={restart}/> : null}
-          <main>
-            <div className={`${styles.field} ${styles['size'+gridArea]}`}>
-              {cardsArray.map((card) => {
-                return (
-                  <Card
-                    key={card.number}
-                    card={card}
-                    theme={theme}
-                    handleCardClick={handleCardClick}
-                  />
-                )
-              })}
+    <div className={styles.page}>
+      <Header restart={restart}/>
+      {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart} totalTurns={totalTurns}/> : null}
+      {timeLeft === 0 ? <DefeatModal totalTurns={totalTurns} restart={restart}/> : null}
+        <main>
+          <div className={`${styles.field} ${styles['size'+gridArea]}`}>
+            {cardsArray.map((card) => {
+              return (
+                <Card
+                  key={card.number}
+                  card={card}
+                  theme={theme}
+                  handleCardClick={handleCardClick}
+                />
+              )
+            })}
+          </div>
+        </main>
+      <footer className={styles.stats}>
+        {playersArray.length > 1
+          ? playersArray.map((player) => {
+            return <StatsCard player={player} key={player.playerNumber} currentPlayer={currentPlayer}/>
+          })
+          : <div className={styles.soloStats}>
+              <p className={styles.time}>{Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</p>
+              <p className={styles.pairs}>Turns {totalTurns}</p>
             </div>
-          </main>
-        <footer className={styles.stats}>
-          {playersArray.length > 1
-            ? playersArray.map((player) => {
-              return <StatsCard player={player} key={player.playerNumber} currentPlayer={currentPlayer}/>
-            })
-            : <div className={styles.soloStats}>
-                <p className={styles.time}>{Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</p>
-                <p className={styles.pairs}>Turns {totalTurns}</p>
-              </div>
-          }
-        </footer>
-      </div>
+        }
+      </footer>
+    </div>
+  )
+}
+
+export default function GameWrapper() {
+  return (
+    <Suspense>
+      <Game />
     </Suspense>
   )
 }
