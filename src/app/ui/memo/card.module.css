@@ -9,6 +9,20 @@
   border-radius: 50%;
   background-color: #2B2D42;
   color: #EDF2F4;
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+
+@keyframes press {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .card:hover {
@@ -28,6 +42,7 @@
 
 .open {
   background-color: #EF233C;
+  animation: press 0.2s 1 linear;
 }
 
 .open p,

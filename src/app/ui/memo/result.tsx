@@ -4,10 +4,16 @@ import ResultStatsCard from './resultStatsCard'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 
-export default function Result({playersArray, restart} : {playersArray: Player[], restart: Function}) {
+type Props = {
+  playersArray: Player[],
+  restart: Function,
+  totalTurns: number,
+}
+
+export default function Result({playersArray, restart, totalTurns} : Props) {
   const router = useRouter();
 
-  function restartGame() {
+  const restartGame = () => {
     router.refresh();
     restart();
   }
@@ -15,11 +21,21 @@ export default function Result({playersArray, restart} : {playersArray: Player[]
   return (
     <div className={styles.popupWrapper}>
       <div className={styles.popup}>
-        <h1 className={styles.heading}>Player {playersArray[0].playerNumber} Wins!</h1>
+        <h1 className={styles.heading}>
+          {playersArray.length === 1
+            ? 'Victory!'
+            : `Player ${playersArray[0].playerNumber} Wins!`
+          }
+        </h1>
         <p className={styles.subheading}>Game is over! Here are the results...</p>
         <ul className={styles.resultsWrapper}>
           {playersArray.map((player) => {
-            return <ResultStatsCard key={player.playerNumber} player={player}/>
+            return (
+              <ResultStatsCard
+              key={player.playerNumber}
+              player={player}
+              totalTurns={playersArray.length === 1 ? totalTurns : undefined}
+            />)
           })}
         </ul>
         <div className={styles.buttonsWrapper}>

@@ -20,6 +20,7 @@ export default function Game() {
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [openCardsIndexes, setOpenCardsIndexes] = useState<number[] | []>([]);
   const [clickable, setClickable] = useState(true);
+  const [totalTurns, setTotalTurns] = useState(0);
   const [totalPoints, setTotalPoints] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   // getting settings from query parameters
@@ -44,8 +45,10 @@ export default function Game() {
 
   function restart() {
     setIsGameOver(false);
+    setOpenCardsIndexes([]);
     startGame();
     setCurrentPlayer(1);
+    setTotalTurns(0);
   }
 
   useEffect(() => {
@@ -62,11 +65,15 @@ export default function Game() {
     if(openCardsIndexes.length === 2) {
       const arrCopy = [...cardsArray];
       setClickable(false);
+      setTotalTurns(total => total+1);
+
       setTimeout(() => {
         if(checkMatch(cardsArray, openCardsIndexes)) {
-          const playersArrCopy = [...playersArray];
-          playersArrCopy[currentPlayer-1].score++;
-          setPlayersArray(playersArrCopy);
+          if(playersArray.length > 1) {
+            const playersArrCopy = [...playersArray];
+            playersArrCopy[currentPlayer-1].score++;
+            setPlayersArray(playersArrCopy);
+          }
           setTotalPoints(totalPoints+1);
           openCardsIndexes.map((index) => {
             arrCopy[index].isLocked = true;
@@ -79,7 +86,9 @@ export default function Game() {
         setCardsArray(arrCopy);
         setOpenCardsIndexes([]);
         setClickable(true);
-        setCurrentPlayer(passPlayersTurn(playersArray, currentPlayer));
+        setCurrentPlayer(() => {
+          return playersArray.length > 1 ? passPlayersTurn(playersArray, currentPlayer) : 1;
+        });
       }, 1000)
     }
   }, [openCardsIndexes, cardsArray, playersArray, currentPlayer, totalPoints])
@@ -99,7 +108,7 @@ export default function Game() {
   return (
     <div className={styles.page}>
       <Header restart={restart}/>
-      {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart}/> : null}
+      {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart} totalTurns={totalTurns}/> : null}
       <main>
         <div className={`${styles.field} ${styles['size'+gridArea]}`}>
           {cardsArray.map((card) => {
@@ -121,7 +130,7 @@ export default function Game() {
             })
           : <div className={styles.soloStats}>
               <p className={styles.time}>0:00</p>
-              <p className={styles.pairs}>Pairs </p>
+              <p className={styles.pairs}>Turns {totalTurns}</p>
             </div>
         }
       </footer>
