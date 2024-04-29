@@ -24,7 +24,7 @@ function Game() {
   const [totalTurns, setTotalTurns] = useState(0);
   const [totalPoints, setTotalPoints] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(120);
   // getting settings from query parameters
   const searchParams = useSearchParams();
   const theme = searchParams.get('theme') as Theme;
