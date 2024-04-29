@@ -49,7 +49,7 @@ function Game() {
     setIsGameOver(false);
     setOpenCardsIndexes([]);
     startGame();
-    setTimeLeft(10);
+    setTimeLeft(120);
     setCurrentPlayer(1);
     setTotalTurns(0);
   }
@@ -65,7 +65,7 @@ function Game() {
       const timer = setInterval(() => {
         const currentTime = new Date().getTime();
         const timeRemaining = endTime - currentTime;
-        if (timeRemaining <= 0) {
+        if (timeRemaining <= 0 || isGameOver) {
           clearInterval(timer);
           setTimeLeft(0);
         } else {
@@ -75,7 +75,7 @@ function Game() {
   
       return () => clearInterval(timer);
     }
-  }, [timeLeft, playersArray]);
+  }, [timeLeft, playersArray, isGameOver]);
 
   // finishes the game if all cards are opened
   useEffect(() => {
@@ -131,7 +131,7 @@ function Game() {
     <div className={styles.page}>
       <Header restart={restart}/>
       {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart} totalTurns={totalTurns}/> : null}
-      {timeLeft === 0 ? <DefeatModal totalTurns={totalTurns} restart={restart}/> : null}
+      {timeLeft === 0 && !isGameOver ? <DefeatModal totalTurns={totalTurns} restart={restart}/> : null}
         <main>
           <div className={`${styles.field} ${styles['size'+gridArea]}`}>
             {cardsArray.map((card) => {
