@@ -1,0 +1,74 @@
+.statsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 160px;
+  height: 100%;
+  padding: 0 20px;
+  border-radius: 10%;
+  background-color: #8D99AE;
+  font-weight: bold;
+  color: #EDF2F4;
+}
+
+.active {
+  position: relative;
+  background-color: #EF233C;
+}
+
+.active:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: #EF233C;
+  transform: translate(-50%, 0) rotate(45deg);
+}
+
+.active:after {
+  content: 'Current turn';
+  position: absolute;
+  left: 50%;
+  bottom: -25px;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  color: #2B2D42;
+  font-size: 12px;
+  letter-spacing: 3px;
+  transform: translate(-50%, 0);
+}
+
+.score {
+  font-size: 20px;
+}
+
+.player {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 650px) {
+  .statsWrapper {
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 10px;
+  }
+
+  .active:after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .statsWrapper {
+    height: 60px;
+  }
+
+  .active:before {
+    width: 15px;
+    height: 15px;
+    top: -7px;
+  }
+}
