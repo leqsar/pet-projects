@@ -58,22 +58,24 @@ function Game() {
     startGame();
   }, [startGame])
 
+  //adds a countdown for solo mode
   useEffect(() => {
     if(playersArray.length === 1) {
+      const endTime = new Date().getTime() + timeLeft * 1000;
       const timer = setInterval(() => {
-        setTimeLeft(prevTimeLeft => {
-          if (prevTimeLeft === 0) {
-            clearInterval(timer);
-            return 0;
-          } else {
-            return prevTimeLeft - 1;
-          }
-        });
-      }, 1000);
-
+        const currentTime = new Date().getTime();
+        const timeRemaining = endTime - currentTime;
+        if (timeRemaining <= 0) {
+          clearInterval(timer);
+          setTimeLeft(0);
+        } else {
+          setTimeLeft(Math.ceil(timeRemaining / 1000));
+        }
+      }, 100);
+  
       return () => clearInterval(timer);
     }
-  })
+  }, [timeLeft, playersArray]);
 
   // finishes the game if all cards are opened
   useEffect(() => {
