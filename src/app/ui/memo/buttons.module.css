@@ -1,0 +1,47 @@
+.buttonsWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.buttonsWrapper button,
+.newGameButton {
+  width: 48%;
+  height: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px 0;
+  border-radius: 25px;
+  border: none;
+  text-align: center;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.buttonsWrapper button:hover {
+  cursor: pointer;
+  transform: scale(0.95);
+}
+
+.restartButton {
+  background-color: #EF233C;
+}
+
+.newGameButton {
+  background-color: #8D99AE;
+  color: #2B2D42;
+}
+
+@media screen and (max-width: 550px) {
+  .buttonsWrapper {
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .buttonsWrapper button,
+  .newGameButton {
+    width: 100%;
+  }
+}

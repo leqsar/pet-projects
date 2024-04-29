@@ -1,4 +1,4 @@
-.popupWrapper {
+.wrapper {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -21,34 +21,17 @@
   background-color: #EDF2F4;
 }
 
-.heading {
-  font-size: 40px;
-  color: #2B2D42;
-}
-
-.subheading {
-  margin-top: 20px;
-  color: #2B2D42
-}
-
-.resultsWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.popup p {
   width: 100%;
-  height: 310px;
-  margin-top: 30px;
+  color: #2B2D42;
+  text-align: center;
 }
 
-@media screen and (max-width: 550px) {
-  .popup {
-    width: 90%;
-  }
+.popup p:first-of-type {
+  font-size: 40px;
 }
 
-@media screen and (max-width: 550px) {
-  .popup {
-    width: 90%;
-    padding: 30px 20px;
-  }
+.popup p:last-of-type {
+  margin-top: 10px;
+  font-size: 30px;
 }

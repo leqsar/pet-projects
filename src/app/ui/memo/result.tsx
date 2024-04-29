@@ -1,4 +1,5 @@
 import styles from '@/app/ui/memo/result.module.css'
+import buttons from '@/app/ui/memo/buttons.module.css'
 import { Player } from '@/app/utils/constants/memo/types'
 import ResultStatsCard from './resultStatsCard'
 import Link from 'next/link'
@@ -38,12 +39,12 @@ export default function Result({playersArray, restart, totalTurns} : Props) {
             />)
           })}
         </ul>
-        <div className={styles.buttonsWrapper}>
+        <div className={buttons.buttonsWrapper}>
           <button 
-            className={styles.restartButton}
+            className={buttons.restartButton}
             onClick={restartGame}
           >Restart</button>
-          <Link href='/projects/memo/settings' className={styles.newGameButton}>Setup New Game</Link>
+          <Link href='/projects/memo/settings' className={buttons.newGameButton}>Setup New Game</Link>
         </div>
       </div>
     </div>

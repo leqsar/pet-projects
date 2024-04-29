@@ -13,6 +13,7 @@ import passPlayersTurn from '@/app/utils/helpers/memo/passPlayersTurn';
 import Result from '@/app/ui/memo/result';
 import sortPlayers from '@/app/utils/helpers/memo/sortPlayers';
 import Header from '@/app/ui/memo/header';
+import DefeatModal from '@/app/ui/memo/defeatModal';
 
 export default function Game() {
   const [cardsArray, setCardsArray] = useState<CardType[] | []>([]);
@@ -23,6 +24,7 @@ export default function Game() {
   const [totalTurns, setTotalTurns] = useState(0);
   const [totalPoints, setTotalPoints] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(10);
   // getting settings from query parameters
   const searchParams = useSearchParams();
   const theme = searchParams.get('theme') as Theme;
@@ -47,6 +49,7 @@ export default function Game() {
     setIsGameOver(false);
     setOpenCardsIndexes([]);
     startGame();
+    setTimeLeft(10);
     setCurrentPlayer(1);
     setTotalTurns(0);
   }
@@ -54,6 +57,23 @@ export default function Game() {
   useEffect(() => {
     startGame();
   }, [startGame])
+
+  useEffect(() => {
+    if(playersArray.length === 1) {
+      const timer = setInterval(() => {
+        setTimeLeft(prevTimeLeft => {
+          if (prevTimeLeft === 0) {
+            clearInterval(timer);
+            return 0;
+          } else {
+            return prevTimeLeft - 1;
+          }
+        });
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  })
 
   // finishes the game if all cards are opened
   useEffect(() => {
@@ -109,6 +129,7 @@ export default function Game() {
     <div className={styles.page}>
       <Header restart={restart}/>
       {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart} totalTurns={totalTurns}/> : null}
+      {timeLeft === 0 ? <DefeatModal totalTurns={totalTurns} restart={restart}/> : null}
       <main>
         <div className={`${styles.field} ${styles['size'+gridArea]}`}>
           {cardsArray.map((card) => {
@@ -129,7 +150,7 @@ export default function Game() {
               return <StatsCard player={player} key={player.playerNumber} currentPlayer={currentPlayer}/>
             })
           : <div className={styles.soloStats}>
-              <p className={styles.time}>0:00</p>
+              <p className={styles.time}>{Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</p>
               <p className={styles.pairs}>Turns {totalTurns}</p>
             </div>
         }
