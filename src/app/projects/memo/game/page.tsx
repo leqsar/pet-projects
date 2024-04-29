@@ -5,7 +5,7 @@ import StatsCard from '@/app/ui/memo/inGameStatsCard';
 import generateNumbersArray from '@/app/utils/helpers/memo/generateNumbersArray';
 import type { CardType, Theme, Player } from '@/app/utils/constants/memo/types';
 import Card from '@/app/ui/memo/card';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, Suspense } from 'react';
 import randomizeArray from '@/app/utils/helpers/memo/randomizeArray';
 import checkMatch from '@/app/utils/helpers/memo/chechMatch';
 import generatePlayersArray from '@/app/utils/helpers/memo/generatePlayers';
@@ -130,20 +130,22 @@ export default function Game() {
       <Header restart={restart}/>
       {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart} totalTurns={totalTurns}/> : null}
       {timeLeft === 0 ? <DefeatModal totalTurns={totalTurns} restart={restart}/> : null}
-      <main>
-        <div className={`${styles.field} ${styles['size'+gridArea]}`}>
-          {cardsArray.map((card) => {
-            return (
-              <Card
-                key={card.number}
-                card={card}
-                theme={theme}
-                handleCardClick={handleCardClick}
-              />
-            )
-          })}
-        </div>
-      </main>
+      <Suspense>
+        <main>
+          <div className={`${styles.field} ${styles['size'+gridArea]}`}>
+            {cardsArray.map((card) => {
+              return (
+                <Card
+                  key={card.number}
+                  card={card}
+                  theme={theme}
+                  handleCardClick={handleCardClick}
+                />
+              )
+            })}
+          </div>
+        </main>
+      </Suspense>
       <footer className={styles.stats}>
         {playersArray.length > 1
           ? playersArray.map((player) => {
