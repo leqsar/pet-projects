@@ -11,6 +11,10 @@
   color: #EDF2F4;
   transition-property: all;
   transition-duration: 0.5s;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-text-select: none;
+  -webkit-user-select: none;
 }
 
 @keyframes press {

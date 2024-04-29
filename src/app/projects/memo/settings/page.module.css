@@ -73,6 +73,7 @@
   transition-duration: 0.4s;
   transition-property: all;
   text-align: center;
+  color: #EDF2F4;
 }
 
 .button:hover {
