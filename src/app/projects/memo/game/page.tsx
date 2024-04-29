@@ -126,37 +126,37 @@ export default function Game() {
   }
 
   return (
-    <div className={styles.page}>
-      <Header restart={restart}/>
-      {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart} totalTurns={totalTurns}/> : null}
-      {timeLeft === 0 ? <DefeatModal totalTurns={totalTurns} restart={restart}/> : null}
-      <Suspense>
-        <main>
-          <div className={`${styles.field} ${styles['size'+gridArea]}`}>
-            {cardsArray.map((card) => {
-              return (
-                <Card
-                  key={card.number}
-                  card={card}
-                  theme={theme}
-                  handleCardClick={handleCardClick}
-                />
-              )
-            })}
-          </div>
-        </main>
-      </Suspense>
-      <footer className={styles.stats}>
-        {playersArray.length > 1
-          ? playersArray.map((player) => {
+    <Suspense>
+      <div className={styles.page}>
+        <Header restart={restart}/>
+        {isGameOver ? <Result playersArray={sortPlayers(playersArray)} restart={restart} totalTurns={totalTurns}/> : null}
+        {timeLeft === 0 ? <DefeatModal totalTurns={totalTurns} restart={restart}/> : null}
+          <main>
+            <div className={`${styles.field} ${styles['size'+gridArea]}`}>
+              {cardsArray.map((card) => {
+                return (
+                  <Card
+                    key={card.number}
+                    card={card}
+                    theme={theme}
+                    handleCardClick={handleCardClick}
+                  />
+                )
+              })}
+            </div>
+          </main>
+        <footer className={styles.stats}>
+          {playersArray.length > 1
+            ? playersArray.map((player) => {
               return <StatsCard player={player} key={player.playerNumber} currentPlayer={currentPlayer}/>
             })
-          : <div className={styles.soloStats}>
-              <p className={styles.time}>{Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</p>
-              <p className={styles.pairs}>Turns {totalTurns}</p>
-            </div>
-        }
-      </footer>
-    </div>
+            : <div className={styles.soloStats}>
+                <p className={styles.time}>{Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</p>
+                <p className={styles.pairs}>Turns {totalTurns}</p>
+              </div>
+          }
+        </footer>
+      </div>
+    </Suspense>
   )
 }
